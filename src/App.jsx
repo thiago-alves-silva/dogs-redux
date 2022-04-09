@@ -4,18 +4,21 @@ import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Login from "./Components/Login/Login";
 import "./App.css";
+import UserStorage from "./UserContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login/*" element={<Login />} />
-        </Routes>
-      </main>
-      <Footer />
+      <UserStorage>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login/*" element={<Login />} />
+          </Routes>
+        </main>
+        <Footer />
+      </UserStorage>
     </BrowserRouter>
   );
 };
