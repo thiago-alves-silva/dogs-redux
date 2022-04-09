@@ -1,0 +1,19 @@
+.button {
+  background: #fb1;
+  color: #764701;
+  border: 0;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  padding: 0.8rem 1.2rem;
+  min-width: 8rem;
+}
+.button:hover,
+.button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px #fea, 0 0 0 3px #fb1;
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}

@@ -1,0 +1,27 @@
+.label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.input {
+  background: #eee;
+  border: 1px solid #eee;
+  border-radius: 0.4rem;
+  transition: 0.1s;
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  width: 100%;
+}
+.input:focus,
+.input:hover {
+  background: #fff;
+  outline: 0;
+  border-color: #fb1;
+  box-shadow: 0 0 0 3px #fea;
+}
+
+.error {
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
