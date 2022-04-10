@@ -4,11 +4,12 @@ import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import Button from "../Forms/Button";
 import Input from "../Forms/Input";
+import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, error, loading } = useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,7 +29,15 @@ const LoginForm = () => {
           autoComplete="username"
           {...password}
         />
-        <Button>Entrar</Button>
+        <Button disabled={loading}>
+          {loading ? "Carregando..." : "Entrar"}
+        </Button>
+        {error && (
+          <p
+            className={styles.error}
+            dangerouslySetInnerHTML={{ __html: error }}
+          ></p>
+        )}
       </form>
       <Link to="criar">Cadastro</Link>
     </div>

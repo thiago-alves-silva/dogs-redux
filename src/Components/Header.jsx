@@ -6,7 +6,6 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   const { data } = useContext(UserContext);
-  console.log("header", data);
 
   return (
     <header className={styles.header}>
@@ -15,7 +14,7 @@ const Header = () => {
           <Dogs />
         </Link>
         {data ? (
-          <Link to="/login" className={styles.login}>
+          <Link to="/conta" className={styles.login}>
             {data.nome}
           </Link>
         ) : (
