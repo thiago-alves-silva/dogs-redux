@@ -1,9 +1,39 @@
-.error {
-  color: #f31;
-  margin: 0.5rem 0;
+.form {
+  margin-bottom: 2rem;
 }
 
-.error a {
-  color: #333;
-  text-decoration: underline;
+.perdeu {
+  display: inline-block;
+  color: #666;
+  line-height: 1;
+  padding: 0.5rem 0;
+}
+.perdeu::after {
+  content: "";
+  display: block;
+  background: currentColor;
+  width: 100%;
+  height: 2px;
+}
+
+.cadastro {
+  margin-top: 4rem;
+}
+
+.cadastro p {
+  margin: 2rem 0 0.5rem;
+}
+
+.subtitle {
+  font-family: var(--type-second);
+  font-size: 2rem;
+  line-height: 1;
+}
+.subtitle::after {
+  content: "";
+  display: block;
+  background: #ddd;
+  border-radius: 0.2rem;
+  width: 3rem;
+  height: 0.5rem;
 }

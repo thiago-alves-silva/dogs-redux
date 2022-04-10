@@ -39,3 +39,36 @@ a {
   margin: 0 auto;
   max-width: 50rem;
 }
+
+.title {
+  position: relative;
+  font-family: var(--type-second);
+  font-size: 3rem;
+  line-height: 1;
+  margin: 1rem 0;
+}
+.title::before {
+  content: "";
+  position: absolute;
+  display: block;
+  background: #fb1;
+  border-radius: 0.2rem;
+  z-index: -1;
+  bottom: 5px;
+  left: -5px;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.anime-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animeLeft 0.3s forwards;
+}
+
+@keyframes animeLeft {
+  to {
+    opacity: initial;
+    transform: initial;
+  }
+}

@@ -1,0 +1,9 @@
+.error {
+  color: #f31;
+  margin: 0.5rem 0;
+}
+
+.error a {
+  color: #333;
+  text-decoration: underline;
+}

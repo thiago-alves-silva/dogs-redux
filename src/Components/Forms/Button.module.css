@@ -1,6 +1,8 @@
 .button {
+  display: inline-block;
   background: #fb1;
   color: #764701;
+  text-align: center;
   border: 0;
   border-radius: 0.4rem;
   cursor: pointer;
