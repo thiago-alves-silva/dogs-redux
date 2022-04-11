@@ -13,7 +13,7 @@ const LoginForm = () => {
   const password = useForm();
   const { userLogin, error, loading } = useContext(UserContext);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (username.validate() && password.validate()) {
       userLogin(username.value, password.value);

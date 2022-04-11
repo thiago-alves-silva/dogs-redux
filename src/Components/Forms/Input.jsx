@@ -1,3 +1,4 @@
+import Error from "../Helper/Error";
 import styles from "./Input.module.css";
 
 const Input = ({ label, value, error, validate, ...props }) => {
@@ -6,7 +7,7 @@ const Input = ({ label, value, error, validate, ...props }) => {
       <label className={styles.label}>
         {label}
         <input type="text" value={value} className={styles.input} {...props} />
-        {error && <p className={styles.error}>{error}</p>}
+        <Error error={error} />
       </label>
     </>
   );
