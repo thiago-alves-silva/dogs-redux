@@ -1,5 +1,11 @@
+import Feed from "./Feed/Feed";
+
 const Home = () => {
-  return <section>Home</section>;
+  return (
+    <section className="container">
+      <Feed />
+    </section>
+  );
 };
 
 export default Home;

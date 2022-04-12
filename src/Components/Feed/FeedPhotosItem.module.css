@@ -1,0 +1,45 @@
+.photo {
+  display: grid;
+  cursor: pointer;
+}
+
+.photo:nth-child(2) {
+  grid-column: 2 / 4;
+  grid-row: span 2;
+}
+
+.photo img {
+  grid-area: 1 / 1;
+}
+
+.photo .acessos {
+  grid-area: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: 0.2s;
+  width: 100%;
+  height: 100%;
+}
+.photo .acessos::before {
+  content: "";
+  display: inline-block;
+  background: url("../../Assets/visualizacao.svg") no-repeat center;
+  margin-right: 0.25rem;
+  width: 16px;
+  height: 10px;
+}
+
+.photo:hover .acessos {
+  opacity: initial;
+}
+
+@media (max-width: 40rem) {
+  .photo:nth-child(2) {
+    grid-column: initial;
+    grid-row: initial;
+  }
+}

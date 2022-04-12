@@ -62,3 +62,13 @@ export const PHOTO_POST = (formData, token) => {
     },
   };
 };
+
+export const PHOTOS_GET = ({ total, page, user }) => {
+  return {
+    url: `${API_URL}/api/photo?_total=${total}&_page=${page}&_user${user}`,
+    options: {
+      method: "GET",
+      cache: "no-store",
+    },
+  };
+};
