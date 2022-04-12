@@ -74,8 +74,8 @@ const UserStorage = ({ children }) => {
         }
       }
     };
-    autoLogin();
-  }, [userLogout]);
+    if (!login) autoLogin();
+  }, [userLogout, login]);
 
   return (
     <UserContext.Provider

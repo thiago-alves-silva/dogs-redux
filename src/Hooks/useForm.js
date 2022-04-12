@@ -15,6 +15,10 @@ const validation = {
       "• 1 caracter maiúsculo<br>" +
       "• 8 caracteres",
   },
+  number: {
+    regex: /^\d+$/,
+    message: "Insira apenas números",
+  },
 };
 
 const useForm = (type) => {
