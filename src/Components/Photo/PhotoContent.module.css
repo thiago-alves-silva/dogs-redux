@@ -1,0 +1,83 @@
+.photo {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  background: #fff;
+  border-radius: 0.2rem;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleUp 0.3s forwards;
+  overflow: hidden;
+  max-width: 1000px;
+}
+
+.img {
+  grid-row: 1/4;
+}
+
+.details {
+  padding: 2rem 2rem 0;
+}
+
+.author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+.author a:hover {
+  text-decoration: underline;
+}
+
+.author .acessos::before {
+  content: "";
+  display: inline-block;
+  background: url("../../Assets/visualizacao-black.svg") no-repeat center;
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 10px;
+}
+
+.attributes {
+  display: flex;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 1rem 0 2rem;
+}
+
+.attributes li {
+  margin-right: 2rem;
+}
+.attributes li::before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background: #999;
+  margin-right: 0.5rem;
+  top: 4px;
+  width: 2px;
+  height: 20px;
+}
+
+.comments {
+  padding: 0 2rem;
+}
+
+@keyframes scaleUp {
+  to {
+    opacity: initial;
+    transform: initial;
+  }
+}
+
+@media (max-width: 40rem) {
+  .photo {
+    grid-template-columns: 1fr;
+  }
+
+  .img {
+    grid-row: 1;
+  }
+}
