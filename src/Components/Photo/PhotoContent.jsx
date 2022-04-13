@@ -3,11 +3,10 @@ import PhotoComments from "./PhotoComments";
 import styles from "./PhotoContent.module.css";
 
 const PhotoContent = ({ data: { photo, comments } }) => {
-  console.log(photo, comments);
   return (
     <div className={styles.photo}>
       <div className={styles.img}>
-        <img src={photo.src} alt={photo.title} width="667" height="667" />
+        <img src={photo.src} alt={photo.title} width="640" height="640" />
       </div>
       <div className={styles.details}>
         <div className={styles.author}>

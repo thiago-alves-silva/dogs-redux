@@ -1,6 +1,6 @@
 .photo {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 36rem 1fr;
   grid-template-rows: auto 1fr auto;
   background: #fff;
   border-radius: 0.2rem;
@@ -8,6 +8,7 @@
   transform: scale(0.8);
   animation: scaleUp 0.3s forwards;
   overflow: hidden;
+  height: 36rem;
   max-width: 1000px;
 }
 
@@ -72,9 +73,11 @@
   }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 64rem) {
   .photo {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(20rem, 40rem);
+    overflow-y: auto;
+    max-height: calc(100% - 4rem);
   }
 
   .img {

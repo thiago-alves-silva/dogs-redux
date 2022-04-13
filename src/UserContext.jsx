@@ -37,7 +37,6 @@ const UserStorage = ({ children }) => {
   const getUser = async (token) => {
     const { url, options } = USER_GET(token);
     const response = await (await fetch(url, options)).json();
-    console.log("user", response);
     return response;
   };
 
