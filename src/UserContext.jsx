@@ -56,8 +56,10 @@ const UserStorage = ({ children }) => {
         try {
           setError(null);
           setLoading(true);
+
           const { url, options } = TOKEN_VALIDATE_POST(token);
           const response = await fetch(url, options);
+
           if (response.ok) {
             setData(await getUser(token));
             setLogin(true);
@@ -73,6 +75,7 @@ const UserStorage = ({ children }) => {
         }
       }
     };
+
     if (!login) autoLogin();
   }, [userLogout, login]);
 

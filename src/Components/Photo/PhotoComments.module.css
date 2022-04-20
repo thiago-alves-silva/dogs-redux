@@ -5,6 +5,19 @@
 }
 
 .comments li {
+  display: grid;
+  grid-template-columns: 1fr auto;
   line-height: 1.2;
   margin-bottom: 0.5rem;
+}
+
+.timeAgo {
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: 0.3s;
+  margin: 3px 0 0 5px;
+}
+
+.comments li:hover .timeAgo {
+  opacity: 0.5;
 }
