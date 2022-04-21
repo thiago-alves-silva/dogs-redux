@@ -12,12 +12,27 @@
   max-width: 1000px;
 }
 
+.single.photo {
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+  height: auto;
+}
+
 .img {
   grid-row: 1/4;
 }
 
+.single .img {
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
 .details {
   padding: 2rem 2rem 0;
+}
+
+.single .details {
+  padding: 2rem 0 0;
 }
 
 .author {
@@ -60,10 +75,6 @@
   top: 4px;
   width: 2px;
   height: 20px;
-}
-
-.comments {
-  padding: 0 2rem;
 }
 
 @keyframes scaleUp {

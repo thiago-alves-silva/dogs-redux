@@ -6,13 +6,18 @@ import PhotoComments from "./PhotoComments";
 import styles from "./PhotoContent.module.css";
 import PhotoDelete from "./PhotoDelete";
 
-const PhotoContent = ({ data: { photo, comments } }) => {
+const PhotoContent = ({ data: { photo, comments }, single }) => {
   const { data } = useContext(UserContext);
 
   return (
-    <div className={styles.photo}>
+    <div className={`${styles.photo} ${single ? styles.single : ""}`}>
       <div className={styles.img}>
-        <Image src={photo.src} alt={photo.title} width="640" height="640" />
+        <Image
+          src={photo.src}
+          alt={photo.title}
+          width={single ? "736" : "640"}
+          height={single ? "736" : "640"}
+        />
       </div>
       <div className={styles.details}>
         <div className={styles.author}>
@@ -33,7 +38,7 @@ const PhotoContent = ({ data: { photo, comments } }) => {
           </li>
         </ul>
       </div>
-      <PhotoComments id={photo.id} comments={comments} />
+      <PhotoComments id={photo.id} comments={comments} single={single} />
     </div>
   );
 };
