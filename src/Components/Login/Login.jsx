@@ -6,6 +6,7 @@ import LoginResetPassword from "./LoginResetPassword";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext";
 import styles from "./Login.module.css";
+import Loading from "../Helper/Loading";
 
 const Login = () => {
   const { login, loading } = useContext(UserContext);
@@ -16,7 +17,7 @@ const Login = () => {
     <section className={styles.login}>
       <div className={styles.forms}>
         {loading ? (
-          "carregando" // lembrar
+          <Loading />
         ) : (
           <Routes>
             <Route path="/" element={<LoginForm />} />
