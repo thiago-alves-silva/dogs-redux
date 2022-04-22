@@ -11,7 +11,8 @@ const LoginCreate = () => {
   const { userLogin } = useContext(UserContext);
   const username = useForm();
   const email = useForm("email");
-  const password = useForm("password");
+  const password = useForm();
+  // const password = useForm("password"); lembrar
   const { error, loading, request } = useFetch();
 
   const handleSubmit = async (event) => {

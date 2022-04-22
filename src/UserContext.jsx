@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 const UserStorage = ({ children }) => {
   const [data, setData] = useState(null);
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(!!window.localStorage.getItem("token"));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ const UserStorage = ({ children }) => {
       }
     };
 
-    if (!login) autoLogin();
+    autoLogin();
   }, [userLogout, login]);
 
   return (

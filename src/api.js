@@ -13,6 +13,18 @@ export const TOKEN_POST = (body) => {
   };
 };
 
+export const TOKEN_VALIDATE_POST = (token) => {
+  return {
+    url: API_URL + "/jwt-auth/v1/token/validate",
+    options: {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+};
+
 export const USER_GET = (token) => {
   return {
     url: API_URL + "/api/user",
@@ -34,18 +46,6 @@ export const USER_POST = (body) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    },
-  };
-};
-
-export const TOKEN_VALIDATE_POST = (token) => {
-  return {
-    url: API_URL + "/jwt-auth/v1/token/validate",
-    options: {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
     },
   };
 };
@@ -82,6 +82,18 @@ export const PHOTO_GET = (id) => {
   };
 };
 
+export const PHOTO_DELETE = (id, token) => {
+  return {
+    url: `${API_URL}/api/photo/${id}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+};
+
 export const COMMENT_POST = (id, token, body) => {
   return {
     url: `${API_URL}/api/comment/${id}`,
@@ -96,14 +108,28 @@ export const COMMENT_POST = (id, token, body) => {
   };
 };
 
-export const PHOTO_DELETE = (id, token) => {
+export const PASSWORD_LOST_POST = (body) => {
   return {
-    url: `${API_URL}/api/photo/${id}`,
+    url: `${API_URL}/api/password/lost`,
     options: {
-      method: "DELETE",
+      method: "POST",
       headers: {
-        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify(body),
+    },
+  };
+};
+
+export const PASSWORD_RESET_POST = (body) => {
+  return {
+    url: `${API_URL}/api/password/reset`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     },
   };
 };
