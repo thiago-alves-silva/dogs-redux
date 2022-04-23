@@ -2,19 +2,17 @@ import Head from "../Helper/Head";
 import useFetch from "../../Hooks/useFetch";
 import Error from "../Helper/Error";
 import Loading from "../Helper/Loading";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { STATS_GET } from "../../api";
+const UserStatsGraphs = lazy(() => import("./UserStatsGraphs"));
 
 const UserStats = () => {
   const { data, error, loading, request } = useFetch();
   useEffect(() => {
-    const getData = async () => {
+    const getData = () => {
       const token = localStorage.getItem("token");
       const { url, options } = STATS_GET(token);
-      const { response, json } = await request(url, options);
-      if (response.ok) {
-        console.log(json);
-      }
+      request(url, options);
     };
 
     getData();
@@ -23,10 +21,10 @@ const UserStats = () => {
   if (error) return <Error />;
   if (loading) return <Loading />;
   return data ? (
-    <div>
+    <Suspense fallback={<></>}>
       <Head title="Estatísticas" />
-      UserStats
-    </div>
+      <UserStatsGraphs data={data} />
+    </Suspense>
   ) : null;
 };
 
