@@ -133,3 +133,15 @@ export const PASSWORD_RESET_POST = (body) => {
     },
   };
 };
+
+export const STATS_GET = (token) => {
+  return {
+    url: `${API_URL}/api/stats`,
+    options: {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+};
