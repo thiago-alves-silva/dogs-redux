@@ -16,12 +16,9 @@ const FeedModal = ({ photo, setModalPhoto }) => {
   };
 
   useEffect(() => {
-    const fetchPhoto = async () => {
+    const fetchPhoto = () => {
       const { url, options } = PHOTO_GET(photo.id);
-      const { response, json } = await request(url, options);
-      if (response.ok) {
-        console.log(json);
-      }
+      request(url, options);
     };
 
     fetchPhoto();

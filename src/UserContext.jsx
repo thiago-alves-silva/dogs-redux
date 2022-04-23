@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 const UserStorage = ({ children }) => {
   const [data, setData] = useState(null);
-  const [login, setLogin] = useState(!!window.localStorage.getItem("token"));
+  const [login, setLogin] = useState(!!window.localStorage.getItem("token")); // Evita que o usuário logado seja redirecionado para a página de login caso atualize a página
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -41,8 +41,8 @@ const UserStorage = ({ children }) => {
   };
 
   const userLogout = useCallback(() => {
-    setData(null);
     setLogin(false);
+    setData(null);
     setLoading(false);
     setError(null);
     localStorage.removeItem("token");
@@ -61,8 +61,10 @@ const UserStorage = ({ children }) => {
           const response = await fetch(url, options);
 
           if (response.ok) {
-            setData(await getUser(token));
-            setLogin(true);
+            if (!data) {
+              setData(await getUser(token));
+              setLogin(true);
+            }
           } else {
             const { message } = await response.json();
             throw new Error(`${message} (Token inválido)`);
@@ -77,7 +79,7 @@ const UserStorage = ({ children }) => {
     };
 
     autoLogin();
-  }, [userLogout, login]);
+  }, [userLogout, login, data]);
 
   return (
     <UserContext.Provider

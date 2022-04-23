@@ -7,6 +7,7 @@ import Input from "../Forms/Input";
 import Error from "../Helper/Error";
 import styles from "./LoginForm.module.css";
 import btnStyles from "../Forms/Button.module.css";
+import Head from "../Helper/Head";
 
 const LoginForm = () => {
   const username = useForm();
@@ -22,6 +23,7 @@ const LoginForm = () => {
 
   return (
     <div className="anime-left">
+      <Head title="Login" description="Página de login da rede social Dogs" />
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input label="Usuário" autoComplete="username" {...username} />

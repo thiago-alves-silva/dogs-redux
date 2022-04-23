@@ -5,6 +5,7 @@ import useForm from "../../Hooks/useForm";
 import useFetch from "../../Hooks/useFetch";
 import { PASSWORD_RESET_POST } from "../../api";
 import Error from "../Helper/Error";
+import Head from "../Helper/Head";
 
 const LoginResetPassword = () => {
   const [login, setLogin] = useState("");
@@ -40,7 +41,14 @@ const LoginResetPassword = () => {
         <p style={{ color: "#777" }}>{data}</p>
       ) : (
         <form onSubmit={handleSubmit}>
-          <Input label="Nova senha" type="password" {...password} />
+          <Head title="Resete a senha" />
+          <Input type="hidden" autoComplete="username" value={login} />
+          <Input
+            label="Nova senha"
+            type="password"
+            autoComplete="new-password"
+            {...password}
+          />
           <Button disabled={loading}>
             {loading ? "Enviando..." : "Resetar"}
           </Button>

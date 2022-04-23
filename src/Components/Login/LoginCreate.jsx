@@ -6,6 +6,7 @@ import { UserContext } from "../../UserContext";
 import Error from "../Helper/Error";
 import useFetch from "../../Hooks/useFetch";
 import { USER_POST } from "../../api";
+import Head from "../Helper/Head";
 
 const LoginCreate = () => {
   const { userLogin } = useContext(UserContext);
@@ -32,6 +33,10 @@ const LoginCreate = () => {
 
   return (
     <div className="anime-left">
+      <Head
+        title="Crie sua conta"
+        description="Página de cadastro da rede social Dogs"
+      />
       <h1 className="title">Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" autoComplete="username" {...username} />

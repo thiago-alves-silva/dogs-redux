@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../UserContext";
+import Loading from "../Helper/Loading";
 import FeedModal from "./FeedModal";
 import FeedPhotos from "./FeedPhotos";
 
@@ -7,6 +9,7 @@ const Feed = ({ user }) => {
   const [pages, setPages] = useState([1]);
   const [loading, setLoading] = useState(false);
   const [infinite, setInfinite] = useState(true);
+  const { loading: contextLoading } = useContext(UserContext);
 
   useEffect(() => {
     const infiniteScroll = () => {
@@ -29,6 +32,10 @@ const Feed = ({ user }) => {
     };
   }, [infinite, loading]);
 
+  // Se a página for atualizada, será aguardado a autenticação do usuário para então ser exibido apenas as fotos dele na página de conta
+  if (window.location.pathname === "/conta" && contextLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       {modalPhoto && (

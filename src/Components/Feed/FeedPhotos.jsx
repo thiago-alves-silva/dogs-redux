@@ -18,10 +18,6 @@ const FeedPhotos = ({ setModalPhoto, user, page, setLoading, setInfinite }) => {
       if (response.ok && json.length < total) {
         setInfinite(false);
       }
-      if (response.ok) {
-        // lembrar
-        console.log(json);
-      }
       setLoading(false);
     };
 

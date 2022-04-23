@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 import { PHOTO_DELETE } from "../../api";
 import useFetch from "../../Hooks/useFetch";
 import styles from "./PhotoDelete.module.css";
