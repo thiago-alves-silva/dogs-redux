@@ -38,7 +38,7 @@ a {
 #root {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh + 10rem);
+  min-height: calc(100vh + 10rem - 4rem); /* 10rem do footer e -4rem do header*/
 }
 
 #main {

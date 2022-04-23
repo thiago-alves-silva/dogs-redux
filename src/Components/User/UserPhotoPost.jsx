@@ -2,7 +2,7 @@ import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 import useForm from "../../Hooks/useForm";
 import useFetch from "../../Hooks/useFetch";
-import styles from "./UserPhoto.module.css";
+import styles from "./UserPhotoPost.module.css";
 import { useState } from "react";
 import { PHOTO_POST } from "../../api";
 import Error from "../Helper/Error";
