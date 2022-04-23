@@ -15,9 +15,9 @@ const Feed = ({ user }) => {
     const infiniteScroll = () => {
       if (infinite) {
         const scroll = window.scrollY; // scroll dado
-        const height = document.body.offsetHeight - window.innerHeight; // quanto tem para dar scroll
+        const height = document.body.offsetHeight - 160 - window.innerHeight; // quanto tem para dar scroll
 
-        if (scroll > height * 0.8 && !loading) {
+        if (scroll > height * 0.75 && !loading) {
           setPages((pages) => [...pages, pages.length + 1]);
         }
       }
