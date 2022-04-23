@@ -35,6 +35,16 @@ a {
   text-decoration: none;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+}
+
+#main {
+  flex: 1;
+}
+
 .container {
   padding: 0 2rem;
   margin: 0 auto;
