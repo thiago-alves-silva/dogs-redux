@@ -3,16 +3,16 @@ import LoginForm from "./LoginForm";
 import LoginCreate from "./LoginCreate.jsx";
 import LoginForgotPassword from "./LoginForgotPassword";
 import LoginResetPassword from "./LoginResetPassword";
-import { useContext } from "react";
-import { UserContext } from "../../UserContext";
 import styles from "./Login.module.css";
 import Loading from "../Helper/Loading";
 import NotFound from "../NotFound";
+import { useSelector } from "react-redux";
 
 const Login = () => {
-  const { login, loading } = useContext(UserContext);
+  const { token, user } = useSelector((state) => state);
+  const loading = token.loading || user.loading;
 
-  if (login) return <Navigate to="/conta" />;
+  if (token.data) return <Navigate to="/conta" />;
 
   return (
     <section className={styles.login}>

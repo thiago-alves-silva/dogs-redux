@@ -16,7 +16,7 @@ const UserStatsGraphs = ({ data }) => {
       <div className={`${styles.acessos} ${styles.graphItem}`}>
         <p>Acessos: {acessos}</p>
       </div>
-      {data.length ? (
+      {!!data.length && (
         <>
           <div className={styles.graphItem}>
             <VictoryPie
@@ -44,8 +44,6 @@ const UserStatsGraphs = ({ data }) => {
             </VictoryChart>
           </div>
         </>
-      ) : (
-        <p>Nenhuma estatística para ser exibida.</p>
       )}
     </section>
   );

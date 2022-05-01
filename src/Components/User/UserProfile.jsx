@@ -9,7 +9,7 @@ const UserProfile = () => {
     <section className="container">
       <Head title={`Perfil do ${user}`} />
       <h1 className="title">{user}</h1>
-      <Feed user={user} />
+      <Feed userId={user} />
     </section>
   );
 };

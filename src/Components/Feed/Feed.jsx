@@ -1,24 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../UserContext";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPhotos, resetFeed } from "../../store/feed";
+import Error from "../Helper/Error";
 import Loading from "../Helper/Loading";
 import FeedModal from "./FeedModal";
 import FeedPhotos from "./FeedPhotos";
+import styles from "./Feed.module.css";
 
-const Feed = ({ user }) => {
-  const [modalPhoto, setModalPhoto] = useState(null);
-  const [pages, setPages] = useState([1]);
-  const [loading, setLoading] = useState(false);
-  const [infinite, setInfinite] = useState(true);
-  const { loading: contextLoading } = useContext(UserContext);
+const Feed = ({ userId }) => {
+  const { pages, loading, infinite, error } = useSelector(
+    (state) => state.feed
+  );
+  const { token, user } = useSelector((state) => state);
+  const userLoading = token.loading || user.loading;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const infiniteScroll = () => {
       if (infinite) {
         const scroll = window.scrollY; // scroll dado
-        const height = document.body.offsetHeight - 160 - window.innerHeight; // quanto tem para dar scroll
+        const height = document.body.offsetHeight - 160 - window.innerHeight; // quanto resta para dar scroll
 
         if (scroll > height * 0.75 && !loading) {
-          setPages((pages) => [...pages, pages.length + 1]);
+          dispatch(fetchPhotos({ page: pages + 1, user: userId }));
         }
       }
     };
@@ -30,28 +34,28 @@ const Feed = ({ user }) => {
       window.removeEventListener("wheel", infiniteScroll);
       window.removeEventListener("scroll", infiniteScroll);
     };
-  }, [infinite, loading]);
+  }, [dispatch, infinite, loading, pages, userId]);
+
+  useEffect(() => {
+    if (!userLoading) {
+      dispatch(resetFeed());
+      dispatch(fetchPhotos({ page: 1, user: userId }));
+    }
+  }, [dispatch, userId, userLoading]);
 
   // Se a página for atualizada, será aguardado a autenticação do usuário para então ser exibido apenas as fotos dele na página de conta
-  if (window.location.pathname === "/conta" && contextLoading) {
+  if (window.location.pathname === "/conta" && !user.data) {
     return <Loading />;
   }
+  if (error) return <Error />;
   return (
-    <div>
-      {modalPhoto && (
-        <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
+    <>
+      <FeedModal />
+      <FeedPhotos />
+      {!infinite && !loading && (
+        <p className={styles.infinite}>Não existem mais postagens.</p>
       )}
-      {pages.map((page) => (
-        <FeedPhotos
-          key={page}
-          page={page}
-          user={user}
-          setModalPhoto={setModalPhoto}
-          setLoading={setLoading}
-          setInfinite={setInfinite}
-        />
-      ))}
-    </div>
+    </>
   );
 };
 

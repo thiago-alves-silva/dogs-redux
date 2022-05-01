@@ -1,11 +1,10 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { UserContext } from "../../UserContext";
+import { useEffect, useRef } from "react";
 import PhotoCommentsForm from "./PhotoCommentsForm";
 import styles from "./PhotoComments.module.css";
+import { useSelector } from "react-redux";
 
 const PhotoComments = (props) => {
-  const [comments, setComments] = useState(props.comments);
-  const { login } = useContext(UserContext);
+  const { data } = useSelector((state) => state.user);
   const commentsSection = useRef();
 
   const timeAgo = (datetime) => {
@@ -27,17 +26,19 @@ const PhotoComments = (props) => {
   };
 
   useEffect(() => {
-    commentsSection.current.scrollTop = commentsSection.current.scrollHeight;
-  }, [comments]);
+    if (commentsSection.current) {
+      commentsSection.current.scrollTop = commentsSection.current.scrollHeight;
+    }
+  }, [props.comments]);
 
   return (
     <>
-      {comments && (
+      {!!props.comments.length && (
         <ul
           className={`${styles.comments} ${props.single ? styles.single : ""}`}
           ref={commentsSection}
         >
-          {comments.map((comment) => (
+          {props.comments.map((comment) => (
             <li key={comment.comment_ID}>
               <span>
                 <b>{comment.comment_author}: </b>
@@ -50,13 +51,7 @@ const PhotoComments = (props) => {
           ))}
         </ul>
       )}
-      {login && (
-        <PhotoCommentsForm
-          id={props.id}
-          setComments={setComments}
-          single={props.single}
-        />
-      )}
+      {data && <PhotoCommentsForm id={props.id} single={props.single} />}
     </>
   );
 };

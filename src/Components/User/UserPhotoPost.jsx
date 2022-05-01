@@ -8,6 +8,7 @@ import { PHOTO_POST } from "../../api";
 import Error from "../Helper/Error";
 import { useNavigate } from "react-router-dom";
 import Head from "../Helper/Head";
+import getLocalStorage from "../../store/helper/getLocalStorage";
 
 const UserPhotoPost = () => {
   const nome = useForm();
@@ -25,7 +26,7 @@ const UserPhotoPost = () => {
     formData.append("peso", peso.value);
     formData.append("idade", idade.value);
 
-    const token = localStorage.getItem("token");
+    const token = getLocalStorage("token", null);
     const { url, options } = PHOTO_POST(formData, token);
     const { response } = await request(url, options);
     if (response.ok) {

@@ -10,9 +10,9 @@ import Head from "../Helper/Head";
 const LoginResetPassword = () => {
   const [login, setLogin] = useState("");
   const [key, setKey] = useState("");
-  const password = useForm();
   const { data, error, loading, request } = useFetch();
-  // const password = useForm("password"); lembrar
+  // const password = useForm();
+  const password = useForm("password");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
